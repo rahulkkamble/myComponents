@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MouseFollower</title>
+    <style>
+        *,
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mini-circle-follower {
+            position: absolute;
+            z-index: 9999999999;
+            /* 10 times 9 */
+            width: 20px;
+            height: 20px;
+            background-color: #b4b4b4;
+            border-radius: 50%;
+            transition: all .35s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- add above all containers and exact below of opening of body tag -->
+    <div class="mini-circle-follower"></div>
+
+    <!-- GSAP for clamp only -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <!-- script -->
+    <script>
+        function mouseFollower(xScale, yScale) {
+            window.addEventListener("mousemove", function (details) {
+                document.querySelector(".mini-circle-follower").style.transform = `translate(${details.clientX}px, ${details.clientY}px) scale(${xScale}, ${yScale})`;
+            })
+        }
+
+        function squizMouseFollower() {
+            // initial scale value of mouse follower
+            let xScale = 1;
+            let yScale = 1;
+
+            // store previous value for comparing new values/mouse travelled values.
+            let xPrev = 0;
+            let yprev = 0;
+
+            // timeout for scale initial
+            let timeout;
+            // calculate travelled distance
+            window.addEventListener("mousemove", function (details) {
+
+                clearTimeout(timeout);
+
+                let xDiff = Math.abs(xPrev - details.clientX);
+                let yDiff = Math.abs(yprev - details.clientY);
+
+                xScale = gsap.utils.clamp(0.6, 1.4, xDiff);
+                yScale = gsap.utils.clamp(0.6, 1.4, yDiff);
+
+                mouseFollower(xScale, yScale);
+                
+                timeout = setTimeout(function(){
+                document.querySelector(".mini-circle-follower").style.transform = `translate(${details.clientX}px, ${details.clientY}px) scale(1, 1)`;
+                },20)
+
+                xPrev = details.clientX;
+                yprev = details.clientY;
+                
+            })
+        }
+
+        // function clamp(minimum, maximum, valueToClamp) {
+        //     if (valueToClamp < minimum) {
+        //         return minimum;
+        //     } else if (valueToClamp > maximum) {
+        //         return maximum;
+        //     } else {
+        //         return valueToClamp;
+        //     }
+        // }
+
+        mouseFollower();
+        squizMouseFollower();
+    </script>
+
+
+</body>
+
+</html>
