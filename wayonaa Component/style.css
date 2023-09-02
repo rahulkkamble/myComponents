@@ -4227,7 +4227,7 @@ h2.large-heading>span.only-text-main {
     max-height: 90vh;
     max-width: 580px;
     border-radius: 14px;
-    transform: scale(0.95);
+    /* transform: scale(0.95); */
 }
 
 .tab-content-right-cards .img-box {
@@ -4237,8 +4237,8 @@ h2.large-heading>span.only-text-main {
 
 .tab-content-right-cards .img-box .business-card {
     max-width: 580px;
-    max-height: 42vh;
-    transform: scale(0.95);
+    max-height: calc(45vh - .8rem);
+    /* transform: scale(0.95); */
 
 }
 
@@ -4278,8 +4278,8 @@ h2.large-heading>span.only-text-main {
     left: 0;
     padding-top: 54vmin;
     padding-bottom: 4vmin;
-    bottom: -1rem;
-    transform: scale(0.903);
+    bottom: -1px;
+    transform: scale(1.0015);
     /* transition: all .3s cubic-bezier(0.25, 0.74, 0.22, 0.99); */
     background: linear-gradient(0deg, black, transparent 60%);
     border-radius: 0px 0px 14px 14px;
@@ -4305,11 +4305,12 @@ h2.large-heading>span.only-text-main {
     background: linear-gradient(0deg, black 0%, transparent 75%);
     bottom: -1px;
     border-radius: 0px 0px 14px 14px;
-    transform: scale(0.9505);
+    /* transform: scale(0.9505); */
 }
 
 .tab-content .img-box:hover .business-card img{
     transform: scale(1.2);
+    cursor: pointer;
 }
 .tab-content .img-box:hover .overlay-1 {
     /* left: 0;
@@ -4318,6 +4319,7 @@ h2.large-heading>span.only-text-main {
     width: 100%; */
     /*bottom: -.655rem;*/
     /*transform: scale(.95);*/
+    cursor: pointer;
     border-radius: 0px 0px 14px 14px !important;
     box-shadow: none !important;
     bottom: 0rem;
@@ -4329,14 +4331,15 @@ h2.large-heading>span.only-text-main {
 .tab-content .img-box:hover .overlay-2,
 .tab-content .img-box:hover .overlay-3 {
     width: 100%;
+    cursor: pointer;
     /*top: 0;*/
     right: 0px;
-    transform: scale(0.9505);
+    /* transform: scale(0.9505); */
     bottom: 0px;
     margin: auto;
     opacity: 0;
     border-radius: 14px 14px 14px 14px;
-    background: linear-gradient(0deg, black, transparent);
+    /* background: linear-gradient(0deg, black, transparent); */
     left:0px;
 }
 @media screen and (max-width: 576px){
